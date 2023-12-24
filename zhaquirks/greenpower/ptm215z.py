@@ -1,7 +1,7 @@
 from zigpy.zgp import GreenPowerDeviceData, GPDeviceType, GPSecurityKeyType, GPSecurityLevel
 from zigpy.zgp.device import GreenPowerDevice
 from zigpy.quirks import CustomGreenPowerDevice
-from zigpy.zcl.clusters.general import GreenPowerProxy
+from zigpy.profiles.zgp import GREENPOWER_CLUSTER_ID
 from zhaquirks.const import (
     BUTTON_1,
     BUTTON_2,
@@ -41,67 +41,67 @@ class EnoceanPTM215ZDevice(CustomGreenPowerDevice, priority=5):
     device_automation_triggers = {
         (PRESSED, BUTTON_1): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x10}
         },
         (RELEASED, BUTTON_1): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x14}
         },
         (PRESSED, BUTTON_2): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x11}
         },
         (RELEASED, BUTTON_2): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x15}
         },
         (PRESSED, BUTTON_3): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x13}
         },
         (RELEASED, BUTTON_3): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x17}
         },
         (PRESSED, BUTTON_4): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x12}
         },
         (RELEASED, BUTTON_4): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x16}
         },
         (PRESSED, BUTTON_1_AND_3): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x64}
         },
         (RELEASED, BUTTON_1_AND_3): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x65}
         },
         (PRESSED, BUTTON_2_AND_4): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x62}
         },
         (RELEASED, BUTTON_2_AND_4): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x63}
         },
         (PRESSED, ENERGY_BAR): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x22}
         },
     }

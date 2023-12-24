@@ -2,11 +2,8 @@ from zigpy.zgp import GreenPowerDeviceData
 from zigpy.zgp.device import GreenPowerDevice
 from zigpy.quirks import CustomGreenPowerDevice
 import zigpy.profiles.zha
-from zigpy.zcl.clusters.general import (
-    Basic,
-    PowerConfiguration,
-    GreenPowerProxy
-)
+from zigpy.profiles.zgp import GREENPOWER_CLUSTER_ID
+from zigpy.zcl.clusters.general import Basic, PowerConfiguration
 
 from zhaquirks import PowerConfigurationCluster
 from zhaquirks.const import (
@@ -53,45 +50,45 @@ class PhilipsSWS200(CustomGreenPowerDevice, priority=1):
     device_automation_triggers = {
         (PRESSED, BUTTON_1): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x10}
         },
         (RELEASED, BUTTON_1): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x18}
         },
 
         (PRESSED, BUTTON_2): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x11}
         },
         (RELEASED, BUTTON_2): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x19}
         },
 
         (PRESSED, BUTTON_3): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x12}
         },
         (RELEASED, BUTTON_3): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x1A}
         },
 
         (PRESSED, BUTTON_4): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x22}
         },
         (RELEASED, BUTTON_4): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x23}
         },
     }

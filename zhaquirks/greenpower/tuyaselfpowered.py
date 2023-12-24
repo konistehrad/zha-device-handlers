@@ -1,19 +1,14 @@
 from zigpy.zgp import GreenPowerDeviceData, GPDeviceType, GPSecurityKeyType, GPSecurityLevel
 from zigpy.zgp.device import GreenPowerDevice
 from zigpy.quirks import CustomGreenPowerDevice
-from zigpy.zcl.clusters.general import GreenPowerProxy
+from zigpy.profiles.zgp import GREENPOWER_CLUSTER_ID
 from zhaquirks.const import (
     BUTTON_1,
     BUTTON_2,
-    BUTTON_3,
-    BUTTON_4,
-    BUTTON_1_AND_3,
-    BUTTON_2_AND_4,
     CLUSTER_ID,
     COMMAND,
     COMMAND_ID,
     COMMAND_NOTIFICATION,
-    ENERGY_BAR,
     PARAMS,
     PRESSED,
 )
@@ -43,12 +38,12 @@ class TuyaSelfPoweredSwitch(CustomGreenPowerDevice, priority=25):
     device_automation_triggers = {
         (PRESSED, BUTTON_1): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x20}
         },
         (PRESSED, BUTTON_2): {
             COMMAND: COMMAND_NOTIFICATION,
-            CLUSTER_ID: GreenPowerProxy.cluster_id,
+            CLUSTER_ID: GREENPOWER_CLUSTER_ID,
             PARAMS: {COMMAND_ID: 0x21}
         },
     }
