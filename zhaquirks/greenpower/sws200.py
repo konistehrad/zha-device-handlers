@@ -21,9 +21,9 @@ from zhaquirks.const import (
 )
 
 class SWS200PowerConfiguration(PowerConfigurationCluster):
-    """Common use power configuration cluster."""
-    MIN_VOLTS = 2.2  # old 2.1
-    MAX_VOLTS = 3.0  # old 3.2
+    """Common use power configuration cluster, with SWS200 Params."""
+    MIN_VOLTS = 2.5
+    MAX_VOLTS = 3.0
 
 
 # High matching priority because we are given a manufacturer and model ID in the pairing
