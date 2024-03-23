@@ -84,7 +84,6 @@ class TuyaSingleSwitchTO(TuyaSwitch):
         MODELS_INFO: [
             ("_TZE200_amp6tsvy", "TS0601"),
             ("_TZE200_oisqyl4o", "TS0601"),
-            ("_TZE200_vhy3iakz", "TS0601"),  # ¿1 or 4 gangs?
             ("_TZ3000_uim07oem", "TS0601"),  # ¿1 or 4 gangs?
             ("_TZE200_wfxuhoea", "TS0601"),
             ("_TZE200_tviaymwx", "TS0601"),
@@ -128,6 +127,7 @@ class TuyaSingleSwitch_GP(TuyaSwitch):
         MODELS_INFO: [
             ("_TZE200_gbagoilo", "TS0601"),  # reported in #1634
             ("_TZE204_6fk3gewc", "TS0601"),
+            ("_TZE204_ptaqh9tk", "TS0601"),  # reported in #2780
         ],
         ENDPOINTS: {
             # <SimpleDescriptor endpoint=1 profile=260 device_type=51 device_version=1
@@ -313,6 +313,7 @@ class TuyaTripleSwitchTO(TuyaSwitch):
         MODELS_INFO: [
             # ("_TZE200_kyfqmmyl", "TS0601"),  ## candidate reported in #716
             ("_TZE200_tz32mtza", "TS0601"),
+            ("_TZE200_vhy3iakz", "TS0601"),
         ],
         ENDPOINTS: {
             1: {
@@ -433,6 +434,63 @@ class TuyaTripleSwitch_GP(TuyaSwitch):
                 DEVICE_TYPE: zgp.DeviceType.PROXY_BASIC,
                 INPUT_CLUSTERS: [],
                 OUTPUT_CLUSTERS: [GreenPowerProxy.cluster_id],
+            },
+        }
+    }
+
+
+class TuyaTripleSwitchVar03(TuyaSwitch):
+    """Tuya triple channel switch (variation 03)."""
+
+    signature = {
+        MODELS_INFO: [
+            ("_TZE200_kyfqmmyl", "TS0601"),  # reported: #2469
+        ],
+        ENDPOINTS: {
+            1: {
+                PROFILE_ID: zha.PROFILE_ID,
+                DEVICE_TYPE: zha.DeviceType.SMART_PLUG,
+                INPUT_CLUSTERS: [
+                    Basic.cluster_id,
+                    Groups.cluster_id,
+                    Scenes.cluster_id,
+                    Time.cluster_id,
+                    TuyaOnOffManufCluster.cluster_id,
+                ],
+                OUTPUT_CLUSTERS: [Ota.cluster_id],
+            }
+        },
+    }
+
+    replacement = {
+        ENDPOINTS: {
+            1: {
+                DEVICE_TYPE: zha.DeviceType.ON_OFF_LIGHT,
+                INPUT_CLUSTERS: [
+                    Basic.cluster_id,
+                    Groups.cluster_id,
+                    Scenes.cluster_id,
+                    Time.cluster_id,
+                    MoesSwitchManufCluster,
+                    TuyaOnOff,
+                ],
+                OUTPUT_CLUSTERS: [Ota.cluster_id],
+            },
+            2: {
+                PROFILE_ID: zha.PROFILE_ID,
+                DEVICE_TYPE: zha.DeviceType.ON_OFF_LIGHT,
+                INPUT_CLUSTERS: [
+                    TuyaOnOff,
+                ],
+                OUTPUT_CLUSTERS: [],
+            },
+            3: {
+                PROFILE_ID: zha.PROFILE_ID,
+                DEVICE_TYPE: zha.DeviceType.ON_OFF_LIGHT,
+                INPUT_CLUSTERS: [
+                    TuyaOnOff,
+                ],
+                OUTPUT_CLUSTERS: [],
             },
         }
     }

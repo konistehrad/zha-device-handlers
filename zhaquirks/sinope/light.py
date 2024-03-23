@@ -49,13 +49,13 @@ class SinopeTechnologiesManufacturerCluster(CustomCluster):
         Partial_lock = 0x02
 
     class PhaseControl(t.enum8):
-        """Phase control value, reverse / forward"""
+        """Phase control value, reverse / forward."""
 
         Forward = 0x00
         Reverse = 0x01
 
     class DoubleFull(t.enum8):
-        """Double click up set full intensity"""
+        """Double click up set full intensity."""
 
         Off = 0x00
         On = 0x01
@@ -88,6 +88,7 @@ class SinopeTechnologiesManufacturerCluster(CustomCluster):
         0x0055: ("min_intensity", t.uint16_t, True),
         0x0056: ("phase_control", PhaseControl, True),
         0x0058: ("double_up_full", DoubleFull, True),
+        0x0090: ("current_summation_delivered", t.uint32_t, True),
         0x00A0: ("timer", t.uint32_t, True),
         0x00A1: ("timer_countdown", t.uint32_t, True),
         0x0119: ("connected_load", t.uint16_t, True),
